@@ -19,10 +19,7 @@ form.addEventListener('submit' , function(evento){
     }
     
     const imc = calculaImc(peso , altura);
-    if(imc == 0.00){
-        mensagem('Altura Invalida coloque um ponto exemplo: 1.72' , false)
-        return
-    }
+    
     const msgNivel = nivelImc(imc);
     mensagem(`O seu imc é ${imc} ${msgNivel}`, true);
     
@@ -31,12 +28,12 @@ form.addEventListener('submit' , function(evento){
 function nivelImc(imc){
     const nivelObesidade = ['Abaixo do peso', 'Peso normal' , 'Sobrepeso' , 'Obesidade grau 1' , 'Obesidade grau 2' , 'Obesidade grau 3'];
 
-    if(imc <= 18.5){return nivelObesidade[0]};
-    if(imc >= 18.5){return nivelObesidade[1]};
-    if(imc >= 24.9){return nivelObesidade[2]};
-    if(imc >= 30.0){return nivelObesidade[3]};
-    if(imc >= 35.0){return nivelObesidade[4]};
-    if(imc >= 40.0){return nivelObesidade[5]};
+    if(imc < 18.5){ return nivelObesidade[0]};
+    if(imc >= 18.5 && imc <= 24.9){ return nivelObesidade[1]};
+    if(imc >= 24.9 && imc <= 29.9){ return nivelObesidade[2]};
+    if(imc >= 30.0 && imc <= 34.9){ return nivelObesidade[3]};
+    if(imc >= 35.0 && imc <= 39.9){ return nivelObesidade[4]};
+    if(imc >= 40.0){ return nivelObesidade[5]};
 }
 
 function calculaImc(peso,altura){
